@@ -21,10 +21,15 @@ public:
 //class of entire Linked List
 class LinkedList
 {
+    friend class ListNode;
+
 private:
     int m_length;   //record size of List
     ListNode *head; //use to record first node address
     ListNode *tail; //use to record first node address
+
+    // void debuginfo()
+
 public:
     //constrctor
     LinkedList() : m_length(0), head(NULL), tail(NULL){};
