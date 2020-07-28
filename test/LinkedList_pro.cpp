@@ -448,9 +448,7 @@ int LinkedList::reverse(int REVERSE_iTYPE)
 
     if (REVERSE_iTYPE == ReverseByElement)
     {
-        int n = m_iLength;
         vector<int> myElement;
-        int i = 0;
 
         ListNode *pCurr = m_pHead;
         while (pCurr != NULL)
@@ -474,9 +472,6 @@ int LinkedList::reverse(int REVERSE_iTYPE)
     }
     else if (REVERSE_iTYPE == ReverseByLink)
     {
-        std::cout << m_pHead->m_iData << std::endl;
-        printList();
-
         while (pFirst != NULL)
         {
             //sliding three pointer 先移動三個指標
