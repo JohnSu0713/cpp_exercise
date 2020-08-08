@@ -506,5 +506,5 @@ int main(int argc, char const *argv[])
     myList.removeDuplicate();
     myList.reverse(ReverseByLink);
 
-    return 0;
+        return 0;
 }

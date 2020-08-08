@@ -9,6 +9,7 @@ using namespace std;
 //constructor and destructor
 ListNode::ListNode() : m_iData(0), m_pNext(NULL){};
 ListNode::ListNode(int iData) : m_iData(iData), m_pNext(NULL){};
+
 LinkedList::LinkedList() : m_iLength(0), m_pHead(NULL), m_pTail(NULL){};
 LinkedList::LinkedList(int iData)
 {
@@ -32,6 +33,7 @@ LinkedList::~LinkedList() //Delete Heap
         ListNode *pTmp = m_pHead;
         m_pHead = m_pHead->m_pNext;
         delete pTmp;
+        pTmp = NULL; //注意：Poiner
     }
     std::cout << "Heap空間完成釋放。" << std::endl;
     return;
@@ -66,6 +68,15 @@ bool LinkedList::isSorted()
     ListNode *pCurr = m_pHead->m_pNext;
     ListNode *pPrev = m_pHead;
 
+    // int iData = 0;
+    // while (pCurr != NULL)
+    // {
+    //     if (pCurr->m_iData > iData)
+    //     {
+    //
+    //     }
+    // }
+
     //moving condition
     while (pCurr->m_iData >= pPrev->m_iData && pCurr->m_pNext != NULL)
     {
@@ -92,7 +103,7 @@ bool LinkedList::isValidIndex(int iIndex)
     return true;
 }
 
-void LinkedList::printList()
+void LinkedList::printList() //可以重載
 {
     //check validation
     if (isEmpty())
@@ -145,7 +156,7 @@ int LinkedList::getSum()
         std::cout << "List is Empty..." << std::endl;
         return 0;
     }
-    //getSum
+    //getSum 改＋號operator
     ListNode *pCurr = m_pHead;
     int sum = 0;
     while (pCurr != NULL)
@@ -182,7 +193,7 @@ int LinkedList::getValue(int iIndex)
         std::cout << "List is Empty..." << std::endl;
         return -1;
     }
-    if (!(this->isValidIndex(iIndex)))
+    if (!(isValidIndex(iIndex)))
     {
         std::cout << "Input wrong index." << std::endl;
         return -1;
@@ -198,6 +209,7 @@ int LinkedList::getValue(int iIndex)
     return pCurr->m_iData;
 }
 
+//傳reference 方式，不要直接回傳vector
 vector<int> LinkedList::searchByValue(int iData)
 {
     vector<int> mySearch;
@@ -232,6 +244,10 @@ vector<int> LinkedList::searchByValue(int iData)
     std::cout << std::endl;
     return mySearch;
 }
+
+//1. 讓Empty也AddNode
+//2. 利用switch()改
+
 int LinkedList::addNode(int iData, int ADD_iType, int iIndex)
 {
     ListNode *newNode = new ListNode(iData);
@@ -239,7 +255,7 @@ int LinkedList::addNode(int iData, int ADD_iType, int iIndex)
     if (ADD_iType == PushFront)
     {
         //check validation
-        if (this->isEmpty())
+        if (isEmpty())
         {
             return -1;
         }
@@ -256,7 +272,7 @@ int LinkedList::addNode(int iData, int ADD_iType, int iIndex)
         }
 
         m_pTail->m_pNext = newNode;
-        m_pTail = m_pTail->m_pNext;
+        m_pTail = newNode;
         m_iLength++;
     }
     else if (ADD_iType == ByIndex)
@@ -286,12 +302,12 @@ int LinkedList::addNode(int iData, int ADD_iType, int iIndex)
 int LinkedList::deleteNode(int iIndex)
 {
     //check validation
-    if (this->isEmpty())
+    if (isEmpty())
     {
         std::cout << "List is Empty..." << std::endl;
         return -1;
     }
-    if (!(this->isValidIndex(iIndex)))
+    if (!(isValidIndex(iIndex)))
     {
         std::cout << "Input wrong index." << std::endl;
         return -1;
@@ -377,7 +393,7 @@ int LinkedList::removeDuplicate()
             pCurr = pPrev->m_pNext;
         }
     }
-    this->printList();
+    printList();
     return 0; //還沒想到
 }
 

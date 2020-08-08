@@ -9,6 +9,7 @@
 //REVERSE_iTYPE
 #define ReverseByElement 0
 #define ReverseByLink 1
+#include <vector>
 
 class LinkedList;
 class ListNode
@@ -46,14 +47,15 @@ public:
     void printList();
     void showInfo();
     int sizeofList();
-    int getSum();
+    int getSum() const; //可以加const
     int getMax();
     int getValue(int iIndex);
     int addNode(int iData, int iType = PushBack, int iIndex = 0);
     int deleteNode(int iIndex);
     int removeDuplicate();
     int reverse(int REVERSE_iTYPE);
-    std::vector<int> searchByValue(int iData);
+    std::vector<int> searchByValue(int iData); //
+    //int getSearchResult(vector<int>* DataVector)
 };
 
 #endif //

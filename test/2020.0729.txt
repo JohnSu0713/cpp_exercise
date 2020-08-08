@@ -1,0 +1,20 @@
+1. 修改LinkedList
+
+2. removeDup() by map(STL)
+
+3. overloading: operator << + > < == 
+    operator << (ostream& outs, const List)
+    cout << List;
+
+4. 合併LinkedList: 
+    Merge two LinkedList
+    (1) copy constructor 注意地址要自己new一塊，注意segmentation fault
+    (2) 函數concatnate()
+
+5. __member_function() const{
+} 不想被改的成員函數加上const 
+    
+6. throw 
+    try{} catch{}
+
+7. ListNode設定getNext() 跟 getData() 傳出資料，不要friend
